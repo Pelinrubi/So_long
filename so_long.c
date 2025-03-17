@@ -6,7 +6,7 @@
 /*   By: algarci5 <algarci5@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:54:03 by algarci5          #+#    #+#             */
-/*   Updated: 2025/03/05 19:28:38 by algarci5         ###   ########.fr       */
+/*   Updated: 2025/03/12 20:19:43 by algarci5         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,68 @@ void print_map(char **mapa, int rows)
         }
     }
 }
+void check_chars(int c, int p, int e)
+{
+	if (c < 1 || p != 1 || e != 1)
+	{
+		ft_printf("Error: Mapa invalido\n");
+		exit(0);
+	}
+}
+void map_chars(char** mapa)
+{
+	int i;
+	int j;
+	int c;
+	int p;
+	int e;
+	
+	i = 0;
+	c = 0;
+	p = 0;
+	e = 0;
+	while(mapa[i])
+	{
+		j = 0;
+		while (mapa[i][j])
+		{
+			if (mapa[i][j] == 'C')
+				c++;
+			else if (mapa[i][j] == 'P')
+				p++;
+			else if (mapa[i][j] == 'E')
+				e++;
+			j++;
+		}
+		i++;
+	}
+	check_chars(c, p, e);
+}
 
+void map_len(char** mapa, int rows)
+{
+	int j;
+
+	j = 0;
+	while (j < rows)
+	{
+		if (j == (rows - 1))
+		{
+			if (ft_strlen(mapa[j]) + 1 != ft_strlen(mapa[0]))
+			{
+				ft_printf("Error: Mapa invalido\n");
+				exit(0);
+			}
+		}
+		else if (ft_strlen(mapa[j]) != ft_strlen(mapa[0]))
+		{
+			ft_printf("Error: Mapa invalido\n");
+			exit(0);
+		}
+		j++;
+	}
+	
+}
 
 int	main(void)
 {
@@ -56,5 +117,7 @@ int	main(void)
 		free(line);
 		line = get_next_line(fd);
 	}
+	map_len(mapa, i);
+	map_chars(mapa);
 	print_map(mapa, i);
 }
