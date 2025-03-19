@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: algarci5 <algarci5@student.42madrid.com    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/03/05 16:29:05 by algarci5          #+#    #+#              #
-#    Updated: 2025/03/05 17:30:25 by algarci5         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 MAKEFLAGS += --no-print-directory
 # The name of your project
 NAME = so_long
@@ -32,7 +20,9 @@ CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
 # A list of all .c files in the current directory
-SRCS = so_long.c
+SRCS = so_long.c\
+map_errors.c\
+camino.c\
 
 # A list of all .o files that correspond to the .c files
 OBJS = $(SRCS:.c=.o)
