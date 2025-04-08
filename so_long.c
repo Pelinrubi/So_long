@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algarci5 <algarci5@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: algarci5 <algarci5@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:54:03 by algarci5          #+#    #+#             */
-/*   Updated: 2025/03/19 17:06:46 by algarci5         ###   ########.fr       */
+/*   Updated: 2025/04/08 15:36:20 by algarci5         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int check_map(char **mapa, char *line, int fd)
 	i = 0;
 	while (line)
 	{
-		mapa[i] = ft_calloc(ft_strlen(line), sizeof(char));
+		mapa[i] = ft_calloc(ft_strlen(line), sizeof(char *));
 		j = 0;
 		while (line[j])
 		{
@@ -93,7 +93,7 @@ int	main(void)
 	char	*line;
 	char	**mapa;
 
-	fd = open("map.txt", O_RDONLY);
+	fd = open("map.ber", O_RDONLY);
 	line = get_next_line(fd);
 	mapa = ft_calloc(ft_strlen(line), sizeof(char *));
 	mem_errors(mapa, fd, line);

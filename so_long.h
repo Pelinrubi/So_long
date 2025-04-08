@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algarci5 <algarci5@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: algarci5 <algarci5@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 17:09:23 by algarci5          #+#    #+#             */
-/*   Updated: 2025/03/19 17:09:24 by algarci5         ###   ########.fr       */
+/*   Updated: 2025/04/08 15:14:21 by algarci5         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ void	check_chars(int c, int p, int e);
 void	check_border(char **mapa);
 char	*free_map(char **map);
 char	**clone_map(char **map);
+
 
 #endif
