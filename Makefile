@@ -23,6 +23,7 @@ RM = rm -f
 SRCS = so_long.c\
 map_errors.c\
 camino.c\
+main.c
 
 # A list of all .o files that correspond to the .c files
 OBJS = $(SRCS:.c=.o)

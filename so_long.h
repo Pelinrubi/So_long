@@ -6,7 +6,7 @@
 /*   By: algarci5 <algarci5@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 17:09:23 by algarci5          #+#    #+#             */
-/*   Updated: 2025/04/08 15:14:21 by algarci5         ###   ########.fr       */
+/*   Updated: 2025/04/11 20:44:11 by algarci5         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,15 @@ void	check_chars(int c, int p, int e);
 void	check_border(char **mapa);
 char	*free_map(char **map);
 char	**clone_map(char **map);
+char	*check_extension(char *arg);
+void open_game(void);
 
+typedef struct s_vars
+{
+	void*		window;
+	void*		context;
+	int32_t		width;
+	int32_t		height;
+} t_vars;
 
 #endif

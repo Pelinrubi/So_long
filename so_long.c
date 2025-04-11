@@ -6,7 +6,7 @@
 /*   By: algarci5 <algarci5@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:54:03 by algarci5          #+#    #+#             */
-/*   Updated: 2025/04/08 15:36:20 by algarci5         ###   ########.fr       */
+/*   Updated: 2025/04/11 20:39:30 by algarci5         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,22 +86,32 @@ void mem_errors(char **mapa, int fd, char *line)
 	}
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	int		i;
 	int		fd;
 	char	*line;
 	char	**mapa;
 
-	fd = open("map.ber", O_RDONLY);
-	line = get_next_line(fd);
-	mapa = ft_calloc(ft_strlen(line), sizeof(char *));
-	mem_errors(mapa, fd, line);
-	i = check_map(mapa, line, fd);
-	check_border(mapa);
-	map_len(mapa, i);
-	map_chars(mapa, i);
-	print_map(mapa, i);
-	close(fd);
-	free_map(mapa);
+	if (argc == 2)
+	{
+		fd = open(argv[1], O_RDONLY);
+		line = get_next_line(fd);
+		mapa = ft_calloc(ft_strlen(line), sizeof(char *));
+		mem_errors(mapa, fd, line);
+		i = check_map(mapa, line, fd);
+		check_extension(argv[1]);
+		check_border(mapa);
+		map_len(mapa, i);
+		map_chars(mapa, i);
+		print_map(mapa, i);
+		close(fd);
+		free_map(mapa);
+		open_game();
+	}
+	else
+	{
+		ft_printf("Error: Numero de argumentos incorrecto\n");
+		exit(0);
+	}
 }

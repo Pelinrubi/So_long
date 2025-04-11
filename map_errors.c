@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_errors.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algarci5 <algarci5@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: algarci5 <algarci5@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:34:27 by algarci5          #+#    #+#             */
-/*   Updated: 2025/03/19 17:07:25 by algarci5         ###   ########.fr       */
+/*   Updated: 2025/04/11 20:15:56 by algarci5         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	check_border(char **mapa)
 		if (mapa[i][0] != '1' || mapa[i][colum - 1] != '1')
 		{
 			ft_printf("Error: bordes invalidos lados\n");
+			free_map(mapa);
 			exit(0);
 		}
 		i++;
@@ -35,6 +36,7 @@ void	check_border(char **mapa)
 		if (mapa[0][j] != '1' || mapa[i - 1][j] != '1')
 		{
 			ft_printf("Error: bordes invalidos arriba/abajo\n");
+			free_map(mapa);
 			exit(0);
 		}
 		j++;
@@ -90,14 +92,31 @@ void	map_len(char **mapa, int rows)
 			if (ft_strlen(mapa[j]) + 1 != ft_strlen(mapa[0]))
 			{
 				ft_printf("Error: Mapa invalido\n");
+				free_map(mapa);
 				exit(0);
 			}
 		}
 		else if (ft_strlen(mapa[j]) != ft_strlen(mapa[0]))
 		{
 			ft_printf("Error: Mapa invalido\n");
+			free_map(mapa);
 			exit(0);
 		}
 		j++;
 	}
+}
+char	*check_extension(char *arg)
+{
+	int	i;
+
+	i = 0;
+	while (arg[i] != '\0')
+		i++;
+	if (arg[i - 1] != 'r' || arg[i - 2] != 'e' || arg[i - 3] != 'b'
+		|| arg[i - 4] != '.')
+	{
+		ft_printf("Error: la extension no es .ber\n");
+		exit(0);
+	}
+	return (arg);
 }
